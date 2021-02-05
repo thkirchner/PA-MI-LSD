@@ -22,6 +22,5 @@ The code for training RF and NN estimators is provided in ``train_decoloring_mod
 Warning: will take long to compute on CPU and you have to build your own MITK (see mitk.org)
 Use ``batch_preprocess_raw_PA_data.ipynb`` to generate beamforming batch script for MITK. Beamforming and bandpass options are set within the ``beamforming.options.xml``, and ``bandpass.bmode.options.xml`` config files.
 ### MCX simulations
-Warning: full resimulation will take very long (around 500 days) to compute on a single SOA GPU. Better implement on HPC. The simulations also use the ippai libary, which is available from the CAMI lab at the German Cancer Research Center upon reasonable request.
-The in silico data sets were simulated with ``python SET03_mc_sim.py id`` on a HPC cluster.
-The settings for preliminary simulations are given in ``SET01_mc_sim.py`` and ``SET02_mc_sim.py``.
+Warning: full resimulation will take very long (around 500 days) to compute on a single SOA GPU. Better implement on HPC. The simulations also use the ippai libary for data management. The library is available upon reasonable request.
+The in silico data sets were simulated with ``python SET03_mc_sim.py id`` on a HPC cluster. The settings for preliminary simulations are given in ``SET01_mc_sim.py`` and ``SET02_mc_sim.py``. The training data arrays (and in silico test data arrays) were generated from the simulation using ``generate_training_data_array.py``.
