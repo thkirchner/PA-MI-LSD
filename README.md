@@ -14,10 +14,10 @@ To reproduce figure "Example illustrations of L1 normalized spectra [...]" and "
 
 ### Reproducing from trained models and preprocessed test data
 Warning: more than 20GB RAM is needed to load the MI-LSD random forest model.
-To reproduce all other result figures and results from trained models TODO
-### Training yourself
+To reproduce all other result figures, table 1 and results from trained models run all cells in ``test_decoloring_all_rCu.ipynb``.
+### Train yourself
 Warning: a CUDA capable GPU and an up and running CUDA is needed to train these FFNN models
-The code for training RF and NN estimators TODO
+The code for training RF and NN estimators is provided in ``train_decoloring_models_rCu.ipynb``.
 ### Processing raw PA data yourself
 Warning: will take long to compute on CPU and you have to build your own MITK (see mitk.org)
 Use ``batch_preprocess_raw_PA_data.ipynb`` to generate beamforming batch script for MITK. Beamforming and bandpass options are set within the ``beamforming.options.xml``, and ``bandpass.bmode.options.xml`` config files.
