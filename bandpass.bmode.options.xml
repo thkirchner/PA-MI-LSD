@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<ProcessingPipeline>
+  <PA>
+    <!--    Bandpass:
+      do [0,1] (bool): bandpass on input
+      highPass (float): frequencies in MHz below are cut off
+      lowPass (float): frequencies in MHz above are cut off
+      alphaLow (float) ]0,1[: Tukey Window for lowPass alpha=0 ->rectangle alpha=1 ->Hann-Window
+      alphaHigh (float) ]0,1[: Tukey Window for highPass alpha=0 ->rectangle alpha=1 ->Hann-Window
+      https://de.wikipedia.org/wiki/Fensterfunktion#Tukey-Fenster
+    -->
+    <Bandpass
+      do="1"
+      highPass="0.0"
+      lowPass="10"
+      alphaLow="0.5"
+      alphaHigh="0.5"
+    />
+
+    <!--     Beamforming:
+      do [0,1] (bool): run this step, or don't
+      imageType ["PA","US"]
+      speedOfSoundMeterPerSecond [float]
+
+      probeGeometry ["concave", "linear"] radius of concave (i.e. iThera MSOT 2d probe) has to be set as radiusInMm
+      radiusMilliMeter [float]
+      pitchMilliMeter [float]
+      timeSpacingInMicroSecond [float] default=0 only set to non-zero if you want to overrule the temporal spacing in the raw data nrrd file
+
+      algorithm ["DAS","sDMAS","DMAS"]
+      apodizationFunction ["Box","Hann","Hamm"]
+      apodizationAngle [float]: sensitivity angle of transducer elements
+
+      reconstructionDepthMeter [float] larger than 0.05 for iThera 2D probe
+      reconctructedYDimension [int] good default is 2048 due to the Fourier transform in the B-mode step
+      reconstructedXDimension [int] sensible default 512
+
+      useGPU [0,1] (bool)
+      GPUBatchSize [int] default of 32 is well tested with mid range GPU e.g. nvidia 960 GTX
+    -->
+    <Beamforming
+      do="0"
+    />
+
+    <!--    Cropping:
+      do [0,1] (bool): run this step
+      cutXX (int): cut int pixel
+      firstSlice (int): start with this slice
+      cutSlices (int): amount of slices
+    -->
+    <Cropping
+      do="1"
+      cutAbove="960"
+      cutBelow="64"
+      cutRight="0"
+      cutLeft="0"
+      firstSlice="0"
+      cutSlices="0"
+    />
+
+    <!--    Resampling:
+      do [0,1] (bool): run this step
+      spacing (float): new spacing in mm
+      dimX (int): pixel in xdim
+    -->
+    <Resampling
+      do="1"
+      spacing="0.15"
+      dimX="128"
+    />
+
+    <!--    BMode:
+      do [0,1] (bool): run this step
+      method (string): "EnvelopeDetection" or "Abs" (AbsoluteFilter)
+      useLogFilter [0,1] (bool)
+    -->
+    <BMode
+      do="1"
+      method="EnvelopeDetection"
+      useLogFilter="0"
+    />
+  </PA>
+</ProcessingPipeline>
