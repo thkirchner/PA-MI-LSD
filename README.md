@@ -4,7 +4,7 @@ TODO give link to published paper
 
 ## General notes
 Always set the correct path in each .ipynb or .py script were ``drive = "/SETDRIVEPATH/data_lsd_trip/"`` or `"SETPATH"` is specified.
-The download link for the paper data is provided in the data availability section. 
+The paper data is available at [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4549631.svg)](https://doi.org/10.5281/zenodo.4549631)
 
 ## Reproducing results and figures
 8GB RAM should suffice.
