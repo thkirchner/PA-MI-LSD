@@ -1,6 +1,7 @@
 # PA-MI-LSD
 This is code for photoacoustic oximetry by multiple illumination learned spectral decoloring.
-TODO give link to published paper
+[(Link to the paper in JBO)](https://doi.org/10.1117/1.JBO.26.8.085001)
+
 
 ## General notes
 Always set the correct path in each .ipynb or .py script were ``drive = "/SETDRIVEPATH/data_lsd_trip/"`` or `"SETPATH"` is specified.
